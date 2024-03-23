@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "title": "Work/School",
+  "iconUrl": "sampleurlforsubcategory.com",
+  "mainCategory": {
+    "id": 1,
+    "title": "Productive Activity",
+    "description": "This is for activities that achieves a certain goal.",
+    "iconUrl": "sampleurl.com"
+  }
+}

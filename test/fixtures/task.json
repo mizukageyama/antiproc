@@ -1,0 +1,31 @@
+{
+  "id": 3,
+  "title": "Learning NextJS",
+  "subcategory": {
+    "id": 1,
+    "title": "Work/School",
+    "iconUrl": "sampleurlforsubcategory.com",
+    "mainCategory": {
+      "id": 1,
+      "title": "Productive Activity",
+      "description": "This is for activities that achieves a certain goal.",
+      "iconUrl": "sampleurl.com"
+    }
+  },
+  "taskRecords": [
+    {
+      "id": 1,
+      "description": "Setup and Installation of NextJS",
+      "timeStarted": "2024-03-23 15:00:00",
+      "timeEnded": "2024-03-23 16:02:00",
+      "totalTime": "01:02:00"
+    },
+    {
+      "id": 2,
+      "description": "",
+      "timeStarted": "2024-03-23 16:30:00",
+      "timeEnded": "2024-03-23 17:00:00",
+      "totalTime": "00:30:00"
+    }
+  ]
+}
