@@ -32,7 +32,7 @@ void main() {
         .thenAnswer((_) async => Right(tDailyRecord));
 
     // Act: Call the method under test directly
-    final result = await usecase.execute(tDate);
+    final result = await usecase(Params(date: tDate));
 
     // Assert: Verify the result
     expect(result, Right(tDailyRecord));

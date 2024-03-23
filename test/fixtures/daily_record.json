@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "date": "2024-03-22",
+  "tasks": [
+    { "id": 1, "title": "Work" },
+    { "id": 2, "title": "Cooking" },
+    { "id": 3, "title": "Learning NextJS" }
+  ],
+  "isComplete": true,
+  "user": {
+    "id": 1,
+    "name": "Emma Watson"
+  }
+}
