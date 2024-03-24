@@ -3,18 +3,12 @@ import 'package:test/features/task/domain/entities/task_record.dart';
 
 class TaskRecordModel extends TaskRecord {
   const TaskRecordModel({
-    required id,
-    required description,
-    required timeStarted,
-    required timeEnded,
-    required totalTime,
-  }) : super(
-          id: id,
-          description: description,
-          timeStarted: timeStarted,
-          timeEnded: timeEnded,
-          totalTime: totalTime,
-        );
+    required super.id,
+    required super.description,
+    required super.timeStarted,
+    required super.timeEnded,
+    required super.totalTime,
+  });
 
   factory TaskRecordModel.fromJson(Map<String, dynamic> json) {
     return TaskRecordModel(

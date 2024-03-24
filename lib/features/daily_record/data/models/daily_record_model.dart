@@ -5,18 +5,12 @@ import 'package:intl/intl.dart';
 
 class DailyRecordModel extends DailyRecord {
   const DailyRecordModel({
-    required id,
-    required date,
-    required tasks,
-    required isComplete,
-    required user,
-  }) : super(
-          id: id,
-          date: date,
-          tasks: tasks,
-          isComplete: isComplete,
-          user: user,
-        );
+    required super.id,
+    required super.date,
+    required super.tasks,
+    required super.isComplete,
+    required super.user,
+  });
 
   factory DailyRecordModel.fromJson(Map<String, dynamic> json) {
     return DailyRecordModel(
@@ -34,7 +28,7 @@ class DailyRecordModel extends DailyRecord {
     return {
       "id": id,
       "date": DateFormat('yyyy-MM-dd').format(date),
-      "tasks": tasks.map((task) => (task as TaskModel).toJson()),
+      "tasks": tasks.map((task) => (task as TaskModel).toJson()).toList(),
       "isComplete": isComplete,
       "user": (user as UserModel).toJson(),
     };

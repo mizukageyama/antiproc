@@ -4,16 +4,11 @@ import 'package:test/shared/data/subcategory_model.dart';
 
 class TaskModel extends Task {
   const TaskModel({
-    required id,
-    required title,
-    required subcategory,
-    required taskRecords,
-  }) : super(
-          id: id,
-          title: title,
-          subcategory: subcategory,
-          taskRecords: taskRecords,
-        );
+    required super.id,
+    required super.title,
+    required super.subcategory,
+    required super.taskRecords,
+  });
 
   factory TaskModel.fromJson(Map<String, dynamic> json) {
     return TaskModel(
@@ -31,9 +26,9 @@ class TaskModel extends Task {
       "id": id,
       "title": title,
       "subcategory": (subcategory as SubcategoryModel).toJson(),
-      "taskRecords": taskRecords.map(
-        (record) => (record as TaskRecordModel).toJson(),
-      ),
+      "taskRecords": taskRecords
+          .map((record) => (record as TaskRecordModel).toJson())
+          .toList(),
     };
   }
 }
