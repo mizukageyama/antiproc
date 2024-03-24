@@ -11,15 +11,16 @@ class GetDailyRecordByDate implements UseCase<DailyRecord, Params> {
 
   @override
   Future<Either<Failure, DailyRecord>> call(Params params) async {
-    return await repository.getDailyRecordByDate(params.date);
+    return await repository.getDailyRecordByDate(params.date, params.userId);
   }
 }
 
 class Params extends Equatable {
   final DateTime date;
+  final int userId;
 
-  const Params({required this.date});
+  const Params({required this.date, required this.userId});
 
   @override
-  List<Object?> get props => [date];
+  List<Object?> get props => [date, userId];
 }

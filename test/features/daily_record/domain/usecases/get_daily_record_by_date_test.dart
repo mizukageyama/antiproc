@@ -22,6 +22,7 @@ void main() {
   });
 
   final tDate = DateTime.now();
+  const tUserId = 1;
   final tDailyRecord = DailyRecordModel(
     id: 1,
     date: DateTime.now(),
@@ -64,15 +65,16 @@ void main() {
 
   test('should get the daily record by date', () async {
     //Arrange
-    when(() => mockDailyRecordRepository.getDailyRecordByDate(tDate))
+    when(() => mockDailyRecordRepository.getDailyRecordByDate(tDate, tUserId))
         .thenAnswer((_) async => Right(tDailyRecord));
 
     // Act: Call the method under test directly
-    final result = await usecase(Params(date: tDate));
+    final result = await usecase(Params(date: tDate, userId: tUserId));
 
     // Assert: Verify the result
     expect(result, Right(tDailyRecord));
-    verify(() => mockDailyRecordRepository.getDailyRecordByDate(tDate));
+    verify(
+        () => mockDailyRecordRepository.getDailyRecordByDate(tDate, tUserId));
     verifyNoMoreInteractions(mockDailyRecordRepository);
   });
 }

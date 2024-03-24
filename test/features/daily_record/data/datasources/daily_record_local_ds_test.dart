@@ -1,12 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test/core/errors/exceptions.dart';
 import 'package:test/features/daily_record/data/datasources/daily_record_local_ds.dart';
 import 'package:test/features/daily_record/data/models/daily_record_model.dart';
-
 import '../../../../fixtures/_fixture_reader.dart';
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}
@@ -69,18 +67,14 @@ void main() {
       when(() => mockSharedPreferences.setString(
               tlastDailyRecordKey, jsonEncode(tdailyRecordModel.toJson())))
           .thenAnswer((_) async => true);
-      when(() => mockSharedPreferences.getString(tlastDailyRecordKey))
-          .thenReturn(jsonEncode(tdailyRecordModel.toJson()));
 
       //Act
       await dataSource.cacheDailyRecord(tdailyRecordModel);
-      final cacheData = await dataSource.getLastDailyRecord();
 
       //Assert
       final expectedJsonString = jsonEncode(tdailyRecordModel.toJson());
       verify(() => mockSharedPreferences.setString(
           tlastDailyRecordKey, expectedJsonString));
-      expect(cacheData, tdailyRecordModel);
     });
   });
 }

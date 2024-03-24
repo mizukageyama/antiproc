@@ -48,6 +48,7 @@ dependencies:
   equatable: ^2.0.5
   # Remote API
   internet_connection_checker: ^1.0.0+1
+  http: ^1.2.0
 
 dev_dependencies:
   flutter_test:

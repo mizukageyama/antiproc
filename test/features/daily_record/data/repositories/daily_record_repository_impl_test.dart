@@ -38,6 +38,7 @@ void main() {
   });
 
   final tDate = DateTime.now();
+  const tUserId = 1;
   final tDailyRecordModel = DailyRecordModel(
     id: 1,
     date: DateTime.parse("2024-03-22"),
@@ -69,13 +70,13 @@ void main() {
     test('should check if the device is online', () async {
       //Arrange
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      when(() => mockRemoteDataSource.getDailyRecordByDate(tDate))
+      when(() => mockRemoteDataSource.getDailyRecordByDate(tDate, tUserId))
           .thenAnswer((_) async => tDailyRecordModel);
       when(() => mockLocalDataSource.cacheDailyRecord(tDailyRecordModel))
           .thenAnswer((_) => Future.value());
 
       //Act
-      await repository.getDailyRecordByDate(tDate);
+      await repository.getDailyRecordByDate(tDate, tUserId);
 
       //Assert
       verify(() => mockNetworkInfo.isConnected);
@@ -86,16 +87,16 @@ void main() {
           'should return remote data when the call to remote data source is successful',
           () async {
         //Arrange
-        when(() => mockRemoteDataSource.getDailyRecordByDate(tDate))
+        when(() => mockRemoteDataSource.getDailyRecordByDate(tDate, tUserId))
             .thenAnswer((_) async => tDailyRecordModel);
         when(() => mockLocalDataSource.cacheDailyRecord(tDailyRecordModel))
             .thenAnswer((_) => Future.value());
 
         //Act
-        final result = await repository.getDailyRecordByDate(tDate);
+        final result = await repository.getDailyRecordByDate(tDate, tUserId);
 
         //Assert
-        verify(() => mockRemoteDataSource.getDailyRecordByDate(tDate));
+        verify(() => mockRemoteDataSource.getDailyRecordByDate(tDate, tUserId));
         expect(result, equals(Right(tDailyRecord)));
       });
 
@@ -103,16 +104,16 @@ void main() {
           'should cache the data locally when the call to remote data source is successful',
           () async {
         //Arrange
-        when(() => mockRemoteDataSource.getDailyRecordByDate(tDate))
+        when(() => mockRemoteDataSource.getDailyRecordByDate(tDate, tUserId))
             .thenAnswer((_) async => tDailyRecordModel);
         when(() => mockLocalDataSource.cacheDailyRecord(tDailyRecordModel))
             .thenAnswer((_) => Future.value());
 
         //Act
-        await repository.getDailyRecordByDate(tDate);
+        await repository.getDailyRecordByDate(tDate, tUserId);
 
         //Assert
-        verify(() => mockRemoteDataSource.getDailyRecordByDate(tDate));
+        verify(() => mockRemoteDataSource.getDailyRecordByDate(tDate, tUserId));
         verify(() => mockLocalDataSource.cacheDailyRecord(tDailyRecordModel));
       });
 
@@ -120,14 +121,14 @@ void main() {
           'should return server failure when the call to remote data source is unsuccessful',
           () async {
         //Arrange
-        when(() => mockRemoteDataSource.getDailyRecordByDate(tDate))
+        when(() => mockRemoteDataSource.getDailyRecordByDate(tDate, tUserId))
             .thenThrow(ServerException());
 
         //Act
-        final result = await repository.getDailyRecordByDate(tDate);
+        final result = await repository.getDailyRecordByDate(tDate, tUserId);
 
         //Assert
-        verify(() => mockRemoteDataSource.getDailyRecordByDate(tDate));
+        verify(() => mockRemoteDataSource.getDailyRecordByDate(tDate, tUserId));
         verifyZeroInteractions(mockLocalDataSource);
         expect(result, equals(Left(ServerFailure())));
       });
@@ -142,7 +143,7 @@ void main() {
             .thenAnswer((_) async => tDailyRecordModel);
 
         //Act
-        final result = await repository.getDailyRecordByDate(tDate);
+        final result = await repository.getDailyRecordByDate(tDate, tUserId);
 
         //Assert
         verifyZeroInteractions(mockRemoteDataSource);
@@ -157,7 +158,7 @@ void main() {
             .thenThrow(CacheException());
 
         //Act
-        final result = await repository.getDailyRecordByDate(tDate);
+        final result = await repository.getDailyRecordByDate(tDate, tUserId);
 
         //Assert
         verifyZeroInteractions(mockRemoteDataSource);

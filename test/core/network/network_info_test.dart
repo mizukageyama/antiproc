@@ -31,14 +31,4 @@ void main() {
       expect(result, await tHasInternetConnection);
     });
   });
-
-  group('isNotConnected', () {
-    test('description', () {
-      //Arrange
-
-      //Act
-
-      //Assert
-    });
-  });
 }

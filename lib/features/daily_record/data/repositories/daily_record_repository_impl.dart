@@ -20,11 +20,11 @@ class DailyRecordRepositoryImpl implements DailyRecordRepository {
 
   @override
   Future<Either<Failure, DailyRecord>> getDailyRecordByDate(
-      DateTime date) async {
+      DateTime date, int userId) async {
     if (await networkInfo.isConnected) {
       try {
         final remoteDailyRecord =
-            await remoteDataSource.getDailyRecordByDate(date);
+            await remoteDataSource.getDailyRecordByDate(date, userId);
         localDataSource.cacheDailyRecord(remoteDailyRecord);
         return Right(remoteDailyRecord);
       } on ServerException {
