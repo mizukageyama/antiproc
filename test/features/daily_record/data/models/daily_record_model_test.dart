@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:test/features/daily_record/data/models/daily_record_model.dart';
 import 'package:test/features/task/data/models/task_record_model.dart';
-import 'package:test/shared/data/category_model.dart';
-import 'package:test/shared/data/subcategory_model.dart';
-import 'package:test/shared/data/user_model.dart';
+import 'package:test/core/data/models/category_model.dart';
+import 'package:test/core/data/models/subcategory_model.dart';
+import 'package:test/core/data/models/user_model.dart';
 import 'package:test/features/daily_record/domain/entities/daily_record.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:test/features/task/data/models/task_model.dart';

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:test/shared/domain/entities/category.dart';
+import 'package:test/core/domain/entities/category.dart';
 
 class Subcategory extends Equatable {
   final int id;

@@ -10,7 +10,7 @@ import 'package:test/features/daily_record/data/models/daily_record_model.dart';
 import 'package:test/features/daily_record/data/repositories/daily_record_repository_impl.dart';
 import 'package:test/features/daily_record/domain/entities/daily_record.dart';
 import 'package:test/features/task/data/models/task_model.dart';
-import 'package:test/shared/data/user_model.dart';
+import 'package:test/core/data/models/user_model.dart';
 
 class MockDailyRecordRemoteDataSource extends Mock
     implements DailyRecordRemoteDataSource {}

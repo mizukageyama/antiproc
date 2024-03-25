@@ -1,6 +1,6 @@
 import 'package:test/features/task/data/models/task_record_model.dart';
 import 'package:test/features/task/domain/entities/task.dart';
-import 'package:test/shared/data/subcategory_model.dart';
+import 'package:test/core/data/models/subcategory_model.dart';
 
 class TaskModel extends Task {
   const TaskModel({
