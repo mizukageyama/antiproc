@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:test/shared/domain/entities/user.dart';
+import 'package:test/core/domain/entities/user.dart';
 import 'package:test/features/task/domain/entities/task.dart';
 
 class DailyRecord extends Equatable {

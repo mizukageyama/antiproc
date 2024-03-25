@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:test/shared/domain/entities/subcategory.dart';
+import 'package:test/core/domain/entities/subcategory.dart';
 import 'package:test/features/task/domain/entities/task_record.dart';
 
 class Task extends Equatable {

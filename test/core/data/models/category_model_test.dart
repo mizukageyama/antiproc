@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:test/shared/data/category_model.dart';
-import 'package:test/shared/domain/entities/category.dart';
-import '../../fixtures/_fixture_reader.dart';
+import 'package:test/core/data/models/category_model.dart';
+import 'package:test/core/domain/entities/category.dart';
+import '../../../fixtures/_fixture_reader.dart';
 
 void main() {
   const tCategoryModel = CategoryModel(

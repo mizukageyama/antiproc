@@ -1,4 +1,4 @@
-import 'package:test/shared/domain/entities/category.dart';
+import 'package:test/core/domain/entities/category.dart';
 
 class CategoryModel extends Category {
   const CategoryModel({

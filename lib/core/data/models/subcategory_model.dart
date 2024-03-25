@@ -1,5 +1,5 @@
-import 'package:test/shared/data/category_model.dart';
-import 'package:test/shared/domain/entities/subcategory.dart';
+import 'package:test/core/data/models/category_model.dart';
+import 'package:test/core/domain/entities/subcategory.dart';
 
 class SubcategoryModel extends Subcategory {
   const SubcategoryModel({
