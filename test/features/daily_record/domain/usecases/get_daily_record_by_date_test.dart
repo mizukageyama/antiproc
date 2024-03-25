@@ -6,11 +6,12 @@ import 'package:test/features/task/data/models/task_record_model.dart';
 import 'package:test/core/data/models/category_model.dart';
 import 'package:test/core/data/models/subcategory_model.dart';
 import 'package:test/core/data/models/user_model.dart';
-import 'package:test/features/daily_record/domain/repositories/daily_record_repository.dart';
+import 'package:test/features/daily_record/domain/repositories/daily_record_repository_intf.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:test/features/daily_record/domain/usecases/get_daily_record_by_date.dart';
 
-class MockDailyRecordRepository extends Mock implements DailyRecordRepository {}
+class MockDailyRecordRepository extends Mock
+    implements DailyRecordRepositoryIntf {}
 
 void main() {
   late GetDailyRecordByDate usecase;

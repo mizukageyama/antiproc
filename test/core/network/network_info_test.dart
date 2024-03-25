@@ -7,12 +7,12 @@ class MockInternetConnectionChecker extends Mock
     implements InternetConnectionChecker {}
 
 void main() {
-  late NetworkInfoImpl networkInfo;
+  late NetworkInfo networkInfo;
   late MockInternetConnectionChecker mockInternetConnectionChecker;
 
   setUp(() {
     mockInternetConnectionChecker = MockInternetConnectionChecker();
-    networkInfo = NetworkInfoImpl(mockInternetConnectionChecker);
+    networkInfo = NetworkInfo(mockInternetConnectionChecker);
   });
 
   group('isConnected', () {

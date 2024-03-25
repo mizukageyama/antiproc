@@ -2,26 +2,26 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/core/errors/exceptions.dart';
-import 'package:test/core/errors/failure.dart';
+import 'package:test/core/errors/failures.dart';
 import 'package:test/core/network/network_info.dart';
 import 'package:test/features/daily_record/data/datasources/daily_record_local_ds.dart';
 import 'package:test/features/daily_record/data/datasources/daily_record_remote_ds.dart';
 import 'package:test/features/daily_record/data/models/daily_record_model.dart';
-import 'package:test/features/daily_record/data/repositories/daily_record_repository_impl.dart';
+import 'package:test/features/daily_record/data/repositories/daily_record_repository.dart';
 import 'package:test/features/daily_record/domain/entities/daily_record.dart';
 import 'package:test/features/task/data/models/task_model.dart';
 import 'package:test/core/data/models/user_model.dart';
 
 class MockDailyRecordRemoteDataSource extends Mock
-    implements DailyRecordRemoteDataSource {}
+    implements DailyRecordRemoteDataSourceIntf {}
 
 class MockDailyRecordLocalDataSource extends Mock
-    implements DailyRecordLocalDataSource {}
+    implements DailyRecordLocalDataSourceIntf {}
 
-class MockNetworkInfo extends Mock implements NetworkInfo {}
+class MockNetworkInfo extends Mock implements NetworkInfoIntf {}
 
 void main() {
-  late DailyRecordRepositoryImpl repository;
+  late DailyRecordRepository repository;
   late MockDailyRecordRemoteDataSource mockRemoteDataSource;
   late MockDailyRecordLocalDataSource mockLocalDataSource;
   late MockNetworkInfo mockNetworkInfo;
@@ -30,7 +30,7 @@ void main() {
     mockRemoteDataSource = MockDailyRecordRemoteDataSource();
     mockLocalDataSource = MockDailyRecordLocalDataSource();
     mockNetworkInfo = MockNetworkInfo();
-    repository = DailyRecordRepositoryImpl(
+    repository = DailyRecordRepository(
       remoteDataSource: mockRemoteDataSource,
       localDataSource: mockLocalDataSource,
       networkInfo: mockNetworkInfo,

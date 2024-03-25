@@ -10,12 +10,12 @@ import '../../../../fixtures/_fixture_reader.dart';
 class MockSharedPreferences extends Mock implements SharedPreferences {}
 
 void main() {
-  late DailyRecordLocalDataSourceImpl dataSource;
+  late DailyRecordLocalDataSource dataSource;
   late MockSharedPreferences mockSharedPreferences;
 
   setUp(() {
     mockSharedPreferences = MockSharedPreferences();
-    dataSource = DailyRecordLocalDataSourceImpl(mockSharedPreferences);
+    dataSource = DailyRecordLocalDataSource(mockSharedPreferences);
   });
 
   group('getLastDailyRecord', () {

@@ -5,17 +5,17 @@ import 'package:intl/intl.dart';
 import 'package:test/core/errors/exceptions.dart';
 import 'package:test/features/daily_record/data/models/daily_record_model.dart';
 
-abstract class DailyRecordRemoteDataSource {
+abstract class DailyRecordRemoteDataSourceIntf {
   /// Calls the http://antiproc.com?userid={number}&date={date} endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
   Future<DailyRecordModel> getDailyRecordByDate(DateTime date, int userId);
 }
 
-class DailyRecordRemoteDataSourceImpl implements DailyRecordRemoteDataSource {
+class DailyRecordRemoteDataSource implements DailyRecordRemoteDataSourceIntf {
   final http.Client httpClient;
 
-  DailyRecordRemoteDataSourceImpl(this.httpClient);
+  DailyRecordRemoteDataSource(this.httpClient);
 
   @override
   Future<DailyRecordModel> getDailyRecordByDate(

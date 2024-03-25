@@ -11,12 +11,12 @@ import '../../../../fixtures/_fixture_reader.dart';
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  late DailyRecordRemoteDataSourceImpl dataSource;
+  late DailyRecordRemoteDataSource dataSource;
   late MockHttpClient mockHttpClient;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    dataSource = DailyRecordRemoteDataSourceImpl(mockHttpClient);
+    dataSource = DailyRecordRemoteDataSource(mockHttpClient);
   });
 
   final tDate = DateTime.parse('2024-03-22');

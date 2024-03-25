@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:test/core/errors/failure.dart';
+import 'package:test/core/errors/failures.dart';
 import 'package:test/features/daily_record/domain/entities/daily_record.dart';
 import 'package:test/features/daily_record/domain/usecases/get_daily_record_by_date.dart';
 part 'daily_record_event.dart';
@@ -32,7 +32,7 @@ class DailyRecordBloc extends Bloc<DailyRecordEvent, DailyRecordState> {
     );
   }
 
-  String _stringMapFailureToMessage(Failure failure) {
+  String _stringMapFailureToMessage(FailureIntf failure) {
     switch (failure.runtimeType) {
       case const (ServerFailure):
         return serverFailure;

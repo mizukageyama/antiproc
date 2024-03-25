@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:test/core/errors/failure.dart';
+import 'package:test/core/errors/failures.dart';
 import 'package:test/features/daily_record/data/models/daily_record_model.dart';
 import 'package:test/features/daily_record/domain/entities/daily_record.dart';
 import 'package:test/features/daily_record/domain/usecases/get_daily_record_by_date.dart';

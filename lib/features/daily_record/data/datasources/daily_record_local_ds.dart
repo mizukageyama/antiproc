@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test/core/errors/exceptions.dart';
 import 'package:test/features/daily_record/data/models/daily_record_model.dart';
 
-abstract class DailyRecordLocalDataSource {
+abstract class DailyRecordLocalDataSourceIntf {
   /// Gets the cached [DailyRecord] which was gotten the last time
   /// the user had an internet connection.
   ///
@@ -16,10 +16,10 @@ abstract class DailyRecordLocalDataSource {
 
 const cacheDailyRecordKey = 'CACHE_DAILY_RECORD';
 
-class DailyRecordLocalDataSourceImpl extends DailyRecordLocalDataSource {
+class DailyRecordLocalDataSource extends DailyRecordLocalDataSourceIntf {
   final SharedPreferences sharedPreferences;
 
-  DailyRecordLocalDataSourceImpl(this.sharedPreferences);
+  DailyRecordLocalDataSource(this.sharedPreferences);
 
   @override
   Future<void> cacheDailyRecord(DailyRecordModel dailyRecordToCache) async {
