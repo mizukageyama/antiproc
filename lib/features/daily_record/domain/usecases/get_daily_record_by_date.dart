@@ -5,9 +5,9 @@ import 'package:test/core/usecases/usecase_intf.dart';
 import 'package:test/features/daily_record/domain/entities/daily_record.dart';
 import 'package:test/features/daily_record/domain/repositories/daily_record_repository_intf.dart';
 
-class GetDailyRecordByDate implements UseCaseIntf<DailyRecord, Params> {
+class GetDailyRecordByDateUsecase implements UsecaseIntf<DailyRecord, Params> {
   final DailyRecordRepositoryIntf repository;
-  GetDailyRecordByDate(this.repository);
+  GetDailyRecordByDateUsecase(this.repository);
 
   @override
   Future<Either<FailureIntf, DailyRecord>> call(Params params) async {

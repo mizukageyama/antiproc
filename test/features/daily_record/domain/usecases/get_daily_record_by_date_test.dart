@@ -14,12 +14,12 @@ class MockDailyRecordRepository extends Mock
     implements DailyRecordRepositoryIntf {}
 
 void main() {
-  late GetDailyRecordByDate usecase;
+  late GetDailyRecordByDateUsecase usecase;
   late MockDailyRecordRepository mockDailyRecordRepository;
 
   setUp(() {
     mockDailyRecordRepository = MockDailyRecordRepository();
-    usecase = GetDailyRecordByDate(mockDailyRecordRepository);
+    usecase = GetDailyRecordByDateUsecase(mockDailyRecordRepository);
   });
 
   final tDate = DateTime.now();

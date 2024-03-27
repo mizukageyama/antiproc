@@ -14,15 +14,15 @@ import 'package:test/features/daily_record/presentation/bloc/daily_record_bloc.d
 final sl = GetIt.instance;
 
 void init() {
-  //___________________ FEATURES ___________________
-  //Feature - Daily Record
-  //Bloc
-  sl.registerFactory(() => DailyRecordBloc(getDailyRecordByDate: sl()));
+  //> FEATURES
+  //. Feature - Daily Record
+  //_ Bloc
+  sl.registerFactory(() => DailyRecordBloc(getDailyRecordByDateUsecase: sl()));
 
-  //Use cases
-  sl.registerLazySingleton(() => GetDailyRecordByDate(sl()));
+  //_ Use cases
+  sl.registerLazySingleton(() => GetDailyRecordByDateUsecase(sl()));
 
-  //Repository
+  //_ Repository
   sl.registerLazySingleton<DailyRecordRepositoryIntf>(
     () => DailyRecordRepository(
       remoteDataSource: sl(),
@@ -31,16 +31,17 @@ void init() {
     ),
   );
 
-  //Datasource
+  //_ Datasource
   sl.registerLazySingleton<DailyRecordRemoteDataSourceIntf>(
       () => DailyRecordRemoteDataSource(sl()));
+
   sl.registerLazySingleton<DailyRecordLocalDataSourceIntf>(
       () => DailyRecordLocalDataSource(sl()));
 
-  //___________________ CORE ___________________
+  //> CORE
   sl.registerLazySingleton<NetworkInfoIntf>(() => NetworkInfo(sl()));
 
-  //___________________EXTERNAL ___________________
+  //> EXTERNAL
   sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());

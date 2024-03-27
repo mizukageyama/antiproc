@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:test/core/errors/failures.dart';
 import 'package:test/features/daily_record/domain/entities/daily_record.dart';
@@ -10,9 +10,10 @@ const String serverFailure = 'Server Failure';
 const String cacheFailure = 'Cache Failure';
 
 class DailyRecordBloc extends Bloc<DailyRecordEvent, DailyRecordState> {
-  final GetDailyRecordByDate getDailyRecordByDate;
+  final GetDailyRecordByDateUsecase getDailyRecordByDateUsecase;
 
-  DailyRecordBloc({required this.getDailyRecordByDate}) : super(EmptyState()) {
+  DailyRecordBloc({required this.getDailyRecordByDateUsecase})
+      : super(EmptyState()) {
     on<GetDailyRecordOfTheSelectedDate>(_getDailyRecordByDateHandler);
   }
 
@@ -21,7 +22,7 @@ class DailyRecordBloc extends Bloc<DailyRecordEvent, DailyRecordState> {
       Emitter<DailyRecordState> emit) async {
     emit(LoadingState());
 
-    final dailyRecordEither = await getDailyRecordByDate
+    final dailyRecordEither = await getDailyRecordByDateUsecase
         .call(Params(date: event.date, userId: event.userId));
 
     dailyRecordEither.fold(

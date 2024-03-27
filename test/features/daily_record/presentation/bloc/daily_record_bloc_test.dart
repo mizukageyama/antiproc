@@ -9,15 +9,17 @@ import 'package:test/features/daily_record/domain/usecases/get_daily_record_by_d
 import 'package:test/features/daily_record/presentation/bloc/daily_record_bloc.dart';
 import '../../../../fixtures/_fixture_reader.dart';
 
-class MockGetDailyRecordByDate extends Mock implements GetDailyRecordByDate {}
+class MockGetDailyRecordByDate extends Mock
+    implements GetDailyRecordByDateUsecase {}
 
 void main() {
   late DailyRecordBloc bloc;
-  late GetDailyRecordByDate mockGetDailyRecordUseCase;
+  late GetDailyRecordByDateUsecase mockGetDailyRecordUseCase;
 
   setUp(() {
     mockGetDailyRecordUseCase = MockGetDailyRecordByDate();
-    bloc = DailyRecordBloc(getDailyRecordByDate: mockGetDailyRecordUseCase);
+    bloc =
+        DailyRecordBloc(getDailyRecordByDateUsecase: mockGetDailyRecordUseCase);
   });
 
   const String serverFailure = 'Server Failure';
