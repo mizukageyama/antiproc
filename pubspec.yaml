@@ -49,6 +49,9 @@ dependencies:
   # Remote API
   internet_connection_checker: ^1.0.0+1
   http: ^1.2.0
+  easy_date_timeline: ^1.0.6
+  syncfusion_flutter_charts: ^25.1.37
+  stop_watch_timer: ^3.1.1
 
 dev_dependencies:
   flutter_test:
