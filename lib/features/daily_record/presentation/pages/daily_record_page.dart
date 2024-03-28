@@ -84,14 +84,15 @@ class DailyRecordPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10.0),
+                const SizedBox(height: 35.0),
                 EasyDateTimeLine(
+                  headerProps: const EasyHeaderProps(showHeader: false),
                   initialDate: DateTime.now(),
                   onDateChange: (selectedDate) {
                     //`selectedDate` the new date selected.
                   },
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 25.0),
                 const Text(
                   'Daily Record',
                   textAlign: TextAlign.center,
@@ -101,16 +102,51 @@ class DailyRecordPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 250,
+                  height: 320,
                   child: SfCircularChart(
+                    annotations: const [
+                      CircularChartAnnotation(
+                        widget: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Total',
+                              style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 0.5),
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              '19hr 20mins',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
                     tooltipBehavior: _tooltip,
+                    legend: const Legend(
+                      isVisible: true,
+                      overflowMode: LegendItemOverflowMode.wrap,
+                    ),
                     series: <CircularSeries<ChartData, String>>[
                       DoughnutSeries<ChartData, String>(
+                        innerRadius: '65%',
                         dataSource: data,
+                        strokeWidth: 30.0,
                         xValueMapper: (ChartData data, _) => data.x,
                         yValueMapper: (ChartData data, _) => data.y,
-                        name: 'Gold',
-                      )
+                        enableTooltip: true,
+                      ),
                     ],
                   ),
                 ),
@@ -155,45 +191,73 @@ class DailyRecordPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         shape: const CircleBorder(),
-        child: const Icon(Icons.add),
+        backgroundColor: Colors.pink.shade300,
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        height: 60,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
         shape: const CircularNotchedRectangle(),
         notchMargin: 9,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-              onPressed: () {},
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.web,
+                  color: Colors.grey.shade600,
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text('Overview')
+              ],
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.search,
-                color: Colors.black,
-              ),
-              onPressed: () {},
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.picture_as_pdf,
+                  color: Colors.grey.shade600,
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text('Report')
+              ],
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.print,
-                color: Colors.black,
-              ),
-              onPressed: () {},
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.notifications_none_outlined,
+                  color: Colors.grey.shade600,
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text('Notification')
+              ],
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.settings_outlined,
-                color: Colors.grey,
-              ),
-              onPressed: () {},
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.settings_outlined,
+                  color: Colors.grey.shade600,
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text('Settings')
+              ],
             ),
           ],
         ),
